@@ -1,65 +1,73 @@
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My LIFF App</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <img id="pictureUrl">
-  <p id="userId"></p>
-  <p id="displayName"></p>
-  <p id="statusMessage"></p>
-  <p id="os"></p>
-  <p id="language"></p>
-  <p id="version"></p>
-  <p id="isInClient"></p>
-  <p id="isLoggedIn"></p>
-  <p id="getAccessToken"></p>
-  <p id="getDecodedIDToken"></p>
-  <p id="getFriendship"></p>
-  <p id="type"></p>
-  <p id="viewType"></p>
-  <p id="utouId"></p>
-  <p id="roomId"></p>
-  <p id="groupId"></p>
-  <p id="scanCode"></p>
-  <button id="btnMsg" onclick="sendMsg()">Send Message</button>
-  <button onclick="openWindow()">Open Window</button>
-  <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
-  <button id="btnSignOut" onclick="signOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My LIFF App</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <img id="pictureUrl" />
+    <p id="userId"></p>
+    <p id="displayName"></p>
+    <p id="statusMessage"></p>
+    <p id="os"></p>
+    <p id="language"></p>
+    <p id="version"></p>
+    <p id="isInClient"></p>
+    <p id="isLoggedIn"></p>
+    <p id="getAccessToken"></p>
+    <p id="getDecodedIDToken"></p>
+    <p id="getFriendship"></p>
+    <p id="type"></p>
+    <p id="viewType"></p>
+    <p id="utouId"></p>
+    <p id="roomId"></p>
+    <p id="groupId"></p>
+    <p id="scanCode"></p>
+    <button id="btnMsg" onclick="sendMsg()">Send Message</button>
+    <button onclick="openWindow()">Open Window</button>
+    <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
+    <button id="btnSignOut" onclick="signOut()">Log Out</button>
+    <button id="btnClose" onclick="closed()">Close</button>
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script> -->
-  <script>
-    async function runApp() {
-    }
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+      async function runApp() {}
 
-    async function sendMsg() {
-    }
+      async function sendMsg() {}
 
-    function openWindow() {
-    }
+      function openWindow() {}
 
-    async function scanCode() {
-    }
+      async function scanCode() {}
 
-    function signOut() {
-    }
+      async function getEnvironment() {
+        document.getElementById("os").append(liff.getOS());
+        document.getElementById("language").append(liff.getLanguage());
+        document.getElementById("version").append(liff.getVersion());
+        document.getElementById("accessToken").append(liff.getAccessToken());
+        document.getElementById("isInClient").append(liff.isInClient()); //เป็นตัวบอกว่า เปิดใน APP หรือ browser
+        if (liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "none";
+        } else {
+          document.getElementById("btnMsg").style.display = "none";
+          document.getElementById("btnScanCode").style.display = "none";
+          document.getElementById("bntClose").style.display = "none";
+        }
+      }
+      function signOut() {}
 
-    function closed() {
-    }
+      function closed() {}
 
-    async function main() {
-      alert("Skooldio x LINEDEVTH")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-    }
-    main()
-  </script>
+      async function main() {
+        await liff.init({ liffId: "2003132482-ymXgpVn9" });
+        getEnvironment();
+      }
+      main();
+    </script>
 
-<!-- 
+    <!-- 
   <script src="js/vconsole.min.js"></script>
   <script>var vConsole = new VConsole()</script>
  -->
-</body>
+  </body>
 </html>
